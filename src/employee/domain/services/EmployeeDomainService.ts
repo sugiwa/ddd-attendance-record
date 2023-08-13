@@ -2,7 +2,7 @@ import { EntityId } from 'src/libs/domain/Entity';
 import { Employee, EmployeeProps } from '../entities/Employee';
 import { EmployeeRepository } from '../repositories/EmployeeRepository';
 
-export class EmployeeService {
+export class EmployeeDomainService {
   constructor(private employeeRepository: EmployeeRepository) {}
 
   createEmployee(props: EmployeeProps): Employee {
