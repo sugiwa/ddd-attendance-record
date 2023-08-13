@@ -1,8 +1,10 @@
+export type EntityId = number;
+
 type EntityProps<T> = {
-  id: number;
+  id: EntityId;
   props: T;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
 export abstract class Entity<T> {
@@ -14,7 +16,7 @@ export abstract class Entity<T> {
     this._updatedAt = updatedAt || now;
   }
 
-  protected _id: number;
+  protected _id: EntityId;
   protected _props: T;
   protected _createdAt: Date;
   protected _updatedAt: Date;
