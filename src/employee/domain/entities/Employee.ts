@@ -3,7 +3,7 @@ import { EmployeeName } from '../valueObjects/EmployeeName';
 
 export type EmployeeProps = {
   name: EmployeeName;
-  companyId: number;
+  // companyId: number;
 };
 
 export class Employee extends Entity<EmployeeProps> {
