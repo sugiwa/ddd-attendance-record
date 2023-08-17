@@ -14,6 +14,7 @@ export class EmployeeDomainService {
   createEmployee(props: EmployeeProps): Employee {
     const id: EntityId = this.employeeRepository.createId();
     const employee = Employee.create({ id, props });
+    this.employeeRepository.create(employee);
     return employee;
   }
 }

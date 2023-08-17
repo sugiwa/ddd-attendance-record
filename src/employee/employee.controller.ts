@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { EmployeeProps } from './domain/entities/Employee';
 
@@ -12,7 +12,7 @@ export class EmployeeController {
   }
 
   @Post()
-  createEmployee(props: EmployeeProps) {
+  createEmployee(@Body() props: EmployeeProps) {
     this.employeeService.createEmployee(props);
   }
 }
