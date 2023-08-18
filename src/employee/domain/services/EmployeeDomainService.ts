@@ -1,5 +1,4 @@
-import { EntityId } from 'src/libs/domain/Entity';
-import { Employee, EmployeeProps } from '../entities/Employee';
+import { Employee } from '../entities/Employee';
 import { EmployeeRepository } from '../repositories/EmployeeRepository';
 import { Inject, Injectable } from '@nestjs/common';
 import { CONSTANTS } from 'src/constants/constantTokens';
@@ -11,10 +10,11 @@ export class EmployeeDomainService {
     private employeeRepository: EmployeeRepository,
   ) {}
 
-  createEmployee(props: EmployeeProps): Employee {
-    const id: EntityId = this.employeeRepository.createId();
-    const employee = Employee.create({ id, props });
-    this.employeeRepository.create(employee);
-    return employee;
+  createEmployee(props: Employee): Employee {
+    return null;
+    // const id: EntityId = this.employeeRepository.createId();
+    // const employee = Employee.create({ id, props });
+    // this.employeeRepository.create(employee);
+    // return employee;
   }
 }

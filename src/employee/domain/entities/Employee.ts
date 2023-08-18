@@ -1,18 +1,16 @@
-import { Entity, EntityId } from 'src/libs/domain/Entity';
+import { Entity } from 'src/libs/domain/Entity';
 import { EmployeeName } from '../valueObjects/EmployeeName';
 
-export type EmployeeProps = {
-  name: EmployeeName;
-  // companyId: number;
-};
+export class Employee implements Entity<Employee> {
+  private id: number;
+  private name: EmployeeName;
 
-export class Employee extends Entity<EmployeeProps> {
-  static create({ id, props }: { id: EntityId; props: EmployeeProps }) {
-    const employee = new Employee({ id, props });
-    return employee;
+  Employee({ id, name }: Employee) {
+    this.id = id;
+    this.name = name;
   }
 
-  public getName() {
-    return this._props.name;
+  sameIdentityAs(other: Employee): boolean {
+    return this.id === other.id;
   }
 }

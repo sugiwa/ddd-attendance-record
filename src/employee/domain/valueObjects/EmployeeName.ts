@@ -1,13 +1,9 @@
 import { ValueObject } from 'src/libs/domain/ValueObject';
 
-export interface EmployeeNameProps {
+export class EmployeeName implements ValueObject<EmployeeName> {
   name: string;
-}
 
-export class EmployeeName extends ValueObject<EmployeeNameProps> {
-  protected validate(props: EmployeeNameProps): void {
-    if (!props.name) {
-      throw new Error('name is empty');
-    }
+  sameValueAs(other: EmployeeName): boolean {
+    return this.name === other.name;
   }
 }
