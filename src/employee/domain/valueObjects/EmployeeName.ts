@@ -1,13 +1,17 @@
 import { ValueObject } from 'src/libs/domain/ValueObject';
 
 export class EmployeeName implements ValueObject<EmployeeName> {
-  name: string;
+  private _name: string;
 
   constructor(name: string) {
-    this.name = name;
+    this._name = name;
+  }
+
+  get name() {
+    return this._name;
   }
 
   sameValueAs(other: EmployeeName): boolean {
-    return this.name === other.name;
+    return this._name === other._name;
   }
 }
