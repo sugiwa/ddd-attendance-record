@@ -1,5 +1,5 @@
-import { Entity } from 'src/shared/domain/Entity';
-import { EmployeeName } from '../valueObjects/EmployeeName';
+import { Entity } from '@shared/domain/Entity';
+import { EmployeeName } from '@employee/domain/valueObjects/EmployeeName';
 
 export class Employee extends Entity<Employee> {
   private _id: number;
