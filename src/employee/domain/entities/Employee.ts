@@ -5,7 +5,7 @@ export class Employee implements Entity<Employee> {
   private id: number;
   private name: EmployeeName;
 
-  Employee({ id, name }: Employee) {
+  constructor({ id, name }) {
     this.id = id;
     this.name = name;
   }

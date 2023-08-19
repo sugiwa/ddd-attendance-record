@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { EmployeeProps } from './domain/entities/Employee';
 import { EmployeeDomainService } from './domain/services/EmployeeDomainService';
 import { CONSTANTS } from 'src/constants/constantTokens';
+import { EmployeeDto } from './dto/EmployeeDto';
 
 @Injectable()
 export class EmployeeService {
@@ -14,7 +14,7 @@ export class EmployeeService {
     return 'OK';
   }
 
-  createEmployee(props: EmployeeProps): void {
+  createEmployee(props: EmployeeDto): void {
     this.employeeDomainService.createEmployee(props);
   }
 }

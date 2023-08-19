@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
-import { EmployeeProps } from './domain/entities/Employee';
+import { EmployeeDto } from './dto/EmployeeDto';
 
 @Controller('employee')
 export class EmployeeController {
@@ -12,7 +12,7 @@ export class EmployeeController {
   }
 
   @Post()
-  createEmployee(@Body() props: EmployeeProps) {
+  createEmployee(@Body() props: EmployeeDto) {
     this.employeeService.createEmployee(props);
   }
 }
