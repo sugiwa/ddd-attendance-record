@@ -1,17 +1,7 @@
-import { ValueObject } from 'src/libs/domain/ValueObject';
+import { ValueObject } from 'src/shared/domain/ValueObject';
 
-export class EmployeeName implements ValueObject<EmployeeName> {
-  private _name: string;
-
-  constructor(name: string) {
-    this._name = name;
-  }
-
-  get name() {
-    return this._name;
-  }
-
-  sameValueAs(other: EmployeeName): boolean {
-    return this._name === other._name;
+export class EmployeeName extends ValueObject<string> {
+  equals(other: EmployeeName): boolean {
+    return this._value === other._value;
   }
 }

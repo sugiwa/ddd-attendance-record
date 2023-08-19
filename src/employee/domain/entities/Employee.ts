@@ -1,11 +1,12 @@
-import { Entity } from 'src/libs/domain/Entity';
+import { Entity } from 'src/shared/domain/Entity';
 import { EmployeeName } from '../valueObjects/EmployeeName';
 
-export class Employee implements Entity<Employee> {
+export class Employee extends Entity<Employee> {
   private _id: number;
   private _name: EmployeeName;
 
   constructor({ id, name }) {
+    super();
     this._id = id;
     this._name = name;
   }
