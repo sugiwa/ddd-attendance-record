@@ -14,7 +14,8 @@ export class EmployeeService {
     return 'OK';
   }
 
-  createEmployee(props: EmployeeDto): void {
-    this.employeeDomainService.createEmployee(props);
+  async createEmployee(props: EmployeeDto): Promise<number> {
+    const employeeId = this.employeeDomainService.createEmployee(props);
+    return employeeId;
   }
 }

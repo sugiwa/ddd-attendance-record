@@ -12,7 +12,8 @@ export class EmployeeController {
   }
 
   @Post()
-  createEmployee(@Body() props: EmployeeDto) {
-    this.employeeService.createEmployee(props);
+  async createEmployee(@Body() props: EmployeeDto) {
+    const employeeId = await this.employeeService.createEmployee(props);
+    return employeeId;
   }
 }

@@ -13,11 +13,9 @@ export class EmployeeRepositoryImpl implements EmployeeRepository {
     return 1;
   }
 
-  create(employee: Employee): void {
-    const emp: EmployeeEntity = {
-      id: 1,
-      name: 'test',
-    };
-    this.prisma.employee.create({ data: emp });
+  async create(employee: Employee): Promise<number> {
+    const { id, ...data } = employee.toPersistence();
+    const emp = await this.prisma.employee.create({ data });
+    return emp.id;
   }
 }

@@ -3,7 +3,7 @@ import { Employee } from '../entities/Employee';
 import { EmployeeRepository } from '../repositories/EmployeeRepository';
 import { Inject, Injectable } from '@nestjs/common';
 import { CONSTANTS } from 'src/constants/constantTokens';
-import { EmployeeFactory } from '../factories/EmployeeFactory';
+import { EmployeeMapper } from 'src/employee/mappers/EmployeeMapper';
 
 @Injectable()
 export class EmployeeDomainService {
@@ -12,10 +12,9 @@ export class EmployeeDomainService {
     private employeeRepository: EmployeeRepository,
   ) {}
 
-  createEmployee(dto: EmployeeDto): Employee {
-    const employee = EmployeeFactory.create(dto);
-    this.employeeRepository.create(employee);
-
-    return employee;
+  async createEmployee(dto: EmployeeDto): Promise<number> {
+    const employee = EmployeeMapper.toDomain(dto);
+    const employeeId = await this.employeeRepository.create(employee);
+    return employeeId;
   }
 }

@@ -22,4 +22,11 @@ export class Employee extends Entity<Employee> {
   sameIdentityAs(other: Employee): boolean {
     return this._id === other._id;
   }
+
+  toPersistence(): any {
+    return {
+      id: this._id,
+      name: this._name._value,
+    };
+  }
 }
