@@ -12,6 +12,11 @@ export class EmployeeDomainService {
     private employeeRepository: EmployeeRepository,
   ) {}
 
+  async find(employeeId: number): Promise<EmployeeDto> {
+    const employee = await this.employeeRepository.find(employeeId);
+    return EmployeeMapper.domain2Dto(employee);
+  }
+
   async createEmployee(dto: EmployeeDto): Promise<number> {
     const employee = EmployeeMapper.toDomain(dto);
     const employeeId = await this.employeeRepository.create(employee);

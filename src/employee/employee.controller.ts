@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Query, Req } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { EmployeeDto } from './dto/EmployeeDto';
 
@@ -9,6 +9,11 @@ export class EmployeeController {
   @Get()
   test() {
     return this.employeeService.test();
+  }
+
+  @Get(':id')
+  async findEmployee(@Param('id', ParseIntPipe) id: number) {
+    return await this.employeeService.find(id);
   }
 
   @Post()

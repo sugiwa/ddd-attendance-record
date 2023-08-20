@@ -14,6 +14,10 @@ export class EmployeeService {
     return 'OK';
   }
 
+  async find(employeeId: number): Promise<EmployeeDto> {
+    return await this.employeeDomainService.find(employeeId);
+  }
+
   async createEmployee(props: EmployeeDto): Promise<number> {
     const employeeId = this.employeeDomainService.createEmployee(props);
     return employeeId;
