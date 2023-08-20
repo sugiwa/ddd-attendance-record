@@ -1,6 +1,6 @@
 import { Employee } from '../domain/entities/Employee';
 import { EmployeeRepository } from '../domain/repositories/EmployeeRepository';
-import { Employee as EmployeeEntity, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { EmployeeMapper } from '../mappers/EmployeeMapper';
 
 export class EmployeeRepositoryImpl implements EmployeeRepository {
