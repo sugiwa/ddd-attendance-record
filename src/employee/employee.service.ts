@@ -22,4 +22,13 @@ export class EmployeeService {
     const employeeId = this.employeeDomainService.createEmployee(props);
     return employeeId;
   }
+
+  async updateEmployee(props: EmployeeDto): Promise<number> {
+    const employeeId = this.employeeDomainService.updateEmployee(props);
+    return employeeId;
+  }
+
+  async deleteEmployee(employeeId: number): Promise<void> {
+    await this.employeeDomainService.deleteEmployee(employeeId);
+  }
 }

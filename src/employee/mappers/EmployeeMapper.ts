@@ -6,8 +6,9 @@ import { Employee as EmployeeEntity } from '@prisma/client';
 
 export class EmployeeMapper implements Mapper<Employee> {
   public static toDomain(dto: EmployeeDto): Employee {
+    const id: number = dto.id;
     const name: EmployeeName = new EmployeeName(dto.name);
-    const employee = new Employee({ id: 0, name });
+    const employee = new Employee({ id, name });
     return employee;
   }
 

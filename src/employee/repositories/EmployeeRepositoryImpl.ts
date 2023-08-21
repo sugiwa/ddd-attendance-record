@@ -27,4 +27,18 @@ export class EmployeeRepositoryImpl implements EmployeeRepository {
     const emp = await this.prisma.employee.create({ data });
     return emp.id;
   }
+
+  async update(employee: Employee): Promise<number> {
+    const data = employee.toPersistence();
+    const emp = await this.prisma.employee.update({
+      data,
+      where: { id: data.id },
+    });
+    return emp.id;
+  }
+
+  async delete(employeeId: number): Promise<number> {
+    await this.prisma.employee.delete({ where: { id: employeeId } });
+    return employeeId;
+  }
 }
