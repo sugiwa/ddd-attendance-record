@@ -1,5 +1,5 @@
-import { CompanyDto } from '@/company/dto/CompanyDto';
+import { Company } from '../entities/Company';
 
 export interface CompanyRepository {
-  create(dto: CompanyDto): Promise<number>;
+  create(company: Company): Promise<number>;
 }

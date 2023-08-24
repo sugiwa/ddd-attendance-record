@@ -1,4 +1,4 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { CompanyService } from './company.service';
 import { CompanyDto } from './dto/CompanyDto';
 
@@ -7,7 +7,7 @@ export class CompanyController {
   constructor(private companyService: CompanyService) {}
 
   @Post()
-  async createCompany(props: CompanyDto): Promise<number> {
+  async createCompany(@Body() props: CompanyDto): Promise<number> {
     const companyId = this.companyService.createCompany(props);
     return companyId;
   }

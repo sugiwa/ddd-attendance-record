@@ -16,6 +16,7 @@
       "@/*": ["src/*"],
       "@shared/*": ["src/shared/*"],
       "@employee/*": ["src/employee/*"],
+      "@company/*": ["src/company/*"],
       "@prisma/*": ["prisma/*"]
     }
   }
