@@ -10,8 +10,22 @@ export class CompanyService {
     private companyDomainService: CompanyDomainService,
   ) {}
 
+  async find(companyId: number): Promise<CompanyDto> {
+    return await this.companyDomainService.find(companyId);
+  }
+
   async createCompany(dto: CompanyDto): Promise<number> {
-    const companyId = this.companyDomainService.create(dto);
+    const companyId = await this.companyDomainService.create(dto);
+    return companyId;
+  }
+
+  async update(dto: CompanyDto): Promise<number> {
+    const companyId = await this.companyDomainService.update(dto);
+    return companyId;
+  }
+
+  async delete(companyId: number): Promise<number> {
+    await this.companyDomainService.delete(companyId);
     return companyId;
   }
 }
