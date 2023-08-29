@@ -13,6 +13,14 @@ package User {
 }
 
 package Attendance {
+    class AttendanceRecord {
+        - id: number
+    }
+
+    class AttendanceHistory {
+        - id: number
+    }
+
     Employee "1"--"*" AttendanceRecord
     AttendanceRecord "1"--"*" AttendanceHistory
 }
