@@ -15,14 +15,11 @@ package User {
 package Attendance {
     class AttendanceRecord {
         - id: number
-    }
-
-    class AttendanceHistory {
-        - id: number
+        - type: number
+        - datetime: Date
     }
 
     Employee "1"--"*" AttendanceRecord
-    AttendanceRecord "1"--"*" AttendanceHistory
 }
 
 @enduml
