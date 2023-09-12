@@ -6,7 +6,7 @@ export const ATTENDANCE_TYPE = {
 } as const;
 
 type AttendanceTypeKeys = keyof typeof ATTENDANCE_TYPE;
-type AttendanceTypeValues = (typeof ATTENDANCE_TYPE)[AttendanceTypeKeys];
+export type AttendanceTypeValues = (typeof ATTENDANCE_TYPE)[AttendanceTypeKeys];
 
 export class AttendanceType extends ValueObject<AttendanceTypeValues> {
   equals(other: ValueObject<number>): boolean {

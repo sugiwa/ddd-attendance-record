@@ -1,3 +1,5 @@
+import { AttendanceRecord } from '../entities/AttendanceRecord';
+
 export interface AttendanceRepository {
-  create(): Promise<number>;
+  create(attendanceRecord: AttendanceRecord): Promise<number>;
 }

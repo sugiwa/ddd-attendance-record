@@ -1,12 +1,14 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import { AttendanceService } from './attendance.service';
+import { AttendanceRecordDto } from './dto/AttendanceRecordDto';
 
 @Controller('attendance')
 export class AttendanceController {
   constructor(private attendanceService: AttendanceService) {}
 
   @Post()
-  async create(): Promise<number> {
-    return 1;
+  async create(@Body() dto: AttendanceRecordDto): Promise<number> {
+    const id = this.attendanceService.create(dto);
+    return id;
   }
 }

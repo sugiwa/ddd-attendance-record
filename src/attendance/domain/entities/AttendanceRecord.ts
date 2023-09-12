@@ -22,4 +22,11 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
   sameIdentityAs(other: AttendanceRecord): boolean {
     return this._id === other._id;
   }
+
+  toPersistence(): any {
+    return {
+      id: this._id,
+      attendanceType: this._attendanceType._value,
+    };
+  }
 }
