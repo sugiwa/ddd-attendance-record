@@ -19,3 +19,8 @@ model Company {
   id   Int    @id @default(autoincrement())
   name String
 }
+
+model AttendanceRecord {
+  id             Int @id @default(autoincrement())
+  attendanceType Int
+}
