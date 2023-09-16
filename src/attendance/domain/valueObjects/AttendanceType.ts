@@ -1,4 +1,5 @@
 import { ValueObject } from '@/shared/domain/ValueObject';
+import { error } from 'console';
 
 export const ATTENDANCE_TYPE = {
   begin: 0,
@@ -8,7 +9,13 @@ export const ATTENDANCE_TYPE = {
 type AttendanceTypeKeys = keyof typeof ATTENDANCE_TYPE;
 export type AttendanceTypeValues = (typeof ATTENDANCE_TYPE)[AttendanceTypeKeys];
 
-export class AttendanceType extends ValueObject<AttendanceTypeValues> {
+export class AttendanceType extends ValueObject<number> {
+  constructor(type: number) {
+    super(type);
+    const attendanceTypes: number[] = Object.values(ATTENDANCE_TYPE);
+    if (!attendanceTypes.includes(type)) throw error;
+  }
+
   equals(other: ValueObject<number>): boolean {
     return this._value === other._value;
   }
