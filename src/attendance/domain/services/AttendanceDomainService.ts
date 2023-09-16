@@ -11,6 +11,12 @@ export class AttendanceDomainService {
     private attendanceRepository: AttendanceRepository,
   ) {}
 
+  async find(id: number): Promise<AttendanceRecordDto> {
+    const attendanceRecord = await this.attendanceRepository.find(id);
+    const dto = AttendanceMapper.domain2Dto(attendanceRecord);
+    return dto;
+  }
+
   async create(dto: AttendanceRecordDto): Promise<number> {
     const attendanceRecord = AttendanceMapper.toDomain(dto);
     const id = this.attendanceRepository.create(attendanceRecord);

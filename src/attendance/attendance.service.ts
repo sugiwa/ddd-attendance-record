@@ -14,6 +14,10 @@ export class AttendanceService {
     return 'OK';
   }
 
+  async find(id: number): Promise<AttendanceRecordDto> {
+    return this.attendanceDomainService.find(id);
+  }
+
   async create(dto: AttendanceRecordDto): Promise<number> {
     const id = await this.attendanceDomainService.create(dto);
     return id;

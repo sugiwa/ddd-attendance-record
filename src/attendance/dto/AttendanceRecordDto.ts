@@ -1,6 +1,6 @@
-import { AttendanceTypeValues } from '../domain/valueObjects/AttendanceType';
+// import { AttendanceTypeValues } from '../domain/valueObjects/AttendanceType';
 
 export class AttendanceRecordDto {
   id: number;
-  attendanceType: AttendanceTypeValues;
+  attendanceType: number;
 }
