@@ -6,12 +6,14 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
   private _id: number;
   private _attendanceType: AttendanceType;
   private _stampDate: StampDate;
+  private _employeeId: number;
 
-  constructor({ id, attendanceType, stampDate }) {
+  constructor({ id, attendanceType, stampDate, employeeId }) {
     super();
     this._id = id;
     this._attendanceType = attendanceType;
     this._stampDate = stampDate;
+    this._employeeId = employeeId;
   }
 
   get id() {
@@ -26,6 +28,10 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
     return this._stampDate;
   }
 
+  get employeeId() {
+    return this._employeeId;
+  }
+
   sameIdentityAs(other: AttendanceRecord): boolean {
     return this._id === other._id;
   }
@@ -35,6 +41,7 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
       id: this._id,
       attendanceType: this._attendanceType.getValue(),
       stampDate: this.stampDate?.getValue(),
+      employeeId: this._employeeId,
     };
   }
 }

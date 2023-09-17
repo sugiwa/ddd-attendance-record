@@ -11,10 +11,13 @@ export class AttendanceMapper implements Mapper<AttendanceRecord> {
     const attendanceType: AttendanceType = new AttendanceType(
       dto.attendanceType,
     );
+    // TODO get employeeId from token
+    const employeeId = 1;
     const attendanceRecord = new AttendanceRecord({
       id,
       attendanceType,
       stampDate: undefined,
+      employeeId,
     });
     return attendanceRecord;
   }
@@ -24,7 +27,13 @@ export class AttendanceMapper implements Mapper<AttendanceRecord> {
   ): AttendanceRecord {
     const attendanceType = new AttendanceType(entity.attendanceType);
     const stampDate = new StampDate(entity.stampDate);
-    return new AttendanceRecord({ id: entity.id, attendanceType, stampDate });
+    const employeeId = entity.employeeId;
+    return new AttendanceRecord({
+      id: entity.id,
+      attendanceType,
+      stampDate,
+      employeeId,
+    });
   }
 
   public static domain2Dto(domain: AttendanceRecord) {
@@ -32,6 +41,7 @@ export class AttendanceMapper implements Mapper<AttendanceRecord> {
     dto.id = domain.id;
     dto.attendanceType = domain.attendanceType.getValue();
     dto.stampDate = domain.stampDate.getValue();
+    dto.employeeId = domain.employeeId;
     return dto;
   }
 }
