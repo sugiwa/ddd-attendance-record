@@ -22,4 +22,8 @@ export class AttendanceService {
     const id = await this.attendanceDomainService.create(dto);
     return id;
   }
+
+  async update(dto: AttendanceRecordDto): Promise<number> {
+    return await this.attendanceDomainService.update(dto);
+  }
 }

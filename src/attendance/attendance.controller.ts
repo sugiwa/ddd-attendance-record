@@ -5,6 +5,7 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Put,
 } from '@nestjs/common';
 import { AttendanceService } from './attendance.service';
 import { AttendanceRecordDto } from './dto/AttendanceRecordDto';
@@ -20,7 +21,11 @@ export class AttendanceController {
 
   @Post()
   async create(@Body() dto: AttendanceRecordDto): Promise<number> {
-    const id = this.attendanceService.create(dto);
-    return id;
+    return await this.attendanceService.create(dto);
+  }
+
+  @Put()
+  async update(@Body() dto: AttendanceRecordDto): Promise<number> {
+    return await this.attendanceService.update(dto);
   }
 }

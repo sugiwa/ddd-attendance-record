@@ -19,7 +19,13 @@ export class AttendanceDomainService {
 
   async create(dto: AttendanceRecordDto): Promise<number> {
     const attendanceRecord = AttendanceMapper.toDomain(dto);
-    const id = this.attendanceRepository.create(attendanceRecord);
+    const id = await this.attendanceRepository.create(attendanceRecord);
+    return id;
+  }
+
+  async update(dto: AttendanceRecordDto): Promise<number> {
+    const attendanceRecord = AttendanceMapper.toDomain(dto);
+    const id = await this.attendanceRepository.update(attendanceRecord);
     return id;
   }
 }

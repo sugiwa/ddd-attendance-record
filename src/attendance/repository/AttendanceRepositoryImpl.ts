@@ -22,4 +22,13 @@ export class AttendanceRepositoryImpl implements AttendanceRepository {
     const res = await this.prisma.attendanceRecord.create({ data });
     return res.id;
   }
+
+  async update(attendanceRecord: AttendanceRecord): Promise<number> {
+    const data = attendanceRecord.toPersistence();
+    const res = await this.prisma.attendanceRecord.update({
+      data,
+      where: { id: data.id },
+    });
+    return res.id;
+  }
 }
