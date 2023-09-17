@@ -21,6 +21,7 @@ model Company {
 }
 
 model AttendanceRecord {
-  id             Int @id @default(autoincrement())
+  id             Int      @id @default(autoincrement())
   attendanceType Int
+  date           DateTime
 }
