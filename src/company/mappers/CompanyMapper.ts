@@ -22,7 +22,7 @@ export class CompanyMapper implements Mapper<Company> {
   public static domain2Dto(company: Company): CompanyDto {
     const dto = new CompanyDto();
     dto.id = company.id;
-    dto.name = company.name._value;
+    dto.name = company.name.getValue();
     return dto;
   }
 }

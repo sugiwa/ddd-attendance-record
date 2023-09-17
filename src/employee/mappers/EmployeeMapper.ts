@@ -21,7 +21,7 @@ export class EmployeeMapper implements Mapper<Employee> {
   public static domain2Dto(employee: Employee): EmployeeDto {
     const dto = new EmployeeDto();
     dto.id = employee.id;
-    dto.name = employee.name._value;
+    dto.name = employee.name.getValue();
     return dto;
   }
 }

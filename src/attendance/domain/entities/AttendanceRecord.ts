@@ -33,8 +33,8 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
   toPersistence(): any {
     return {
       id: this._id,
-      attendanceType: this._attendanceType._value,
-      stampDate: this.stampDate?._value,
+      attendanceType: this._attendanceType.getValue(),
+      stampDate: this.stampDate?.getValue(),
     };
   }
 }

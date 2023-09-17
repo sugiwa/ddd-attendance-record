@@ -16,7 +16,7 @@ export class AttendanceType extends ValueObject<number> {
     if (!attendanceTypes.includes(type)) throw error;
   }
 
-  equals(other: ValueObject<number>): boolean {
-    return this._value === other._value;
+  equals(other: AttendanceType): boolean {
+    return this.getValue() === other.getValue();
   }
 }

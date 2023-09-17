@@ -26,7 +26,7 @@ export class Company extends Entity<Company> {
   toPersistence(): any {
     return {
       id: this._id,
-      name: this._name._value,
+      name: this._name.getValue(),
     };
   }
 }

@@ -30,8 +30,8 @@ export class AttendanceMapper implements Mapper<AttendanceRecord> {
   public static domain2Dto(domain: AttendanceRecord) {
     const dto = new AttendanceRecordDto();
     dto.id = domain.id;
-    dto.attendanceType = domain.attendanceType._value;
-    dto.stampDate = domain.stampDate._value;
+    dto.attendanceType = domain.attendanceType.getValue();
+    dto.stampDate = domain.stampDate.getValue();
     return dto;
   }
 }
