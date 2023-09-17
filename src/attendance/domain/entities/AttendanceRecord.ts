@@ -1,14 +1,17 @@
 import { Entity } from '@/shared/domain/Entity';
 import { AttendanceType } from '../valueObjects/AttendanceType';
+import { StampDate } from '../valueObjects/StampDate';
 
 export class AttendanceRecord extends Entity<AttendanceRecord> {
   private _id: number;
   private _attendanceType: AttendanceType;
+  private _stampDate: StampDate;
 
-  constructor({ id, attendanceType }) {
+  constructor({ id, attendanceType, stampDate }) {
     super();
     this._id = id;
     this._attendanceType = attendanceType;
+    this._stampDate = stampDate;
   }
 
   get id() {
@@ -19,6 +22,10 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
     return this._attendanceType;
   }
 
+  get stampDate() {
+    return this._stampDate;
+  }
+
   sameIdentityAs(other: AttendanceRecord): boolean {
     return this._id === other._id;
   }
@@ -27,6 +34,7 @@ export class AttendanceRecord extends Entity<AttendanceRecord> {
     return {
       id: this._id,
       attendanceType: this._attendanceType._value,
+      stampDate: this.stampDate?._value,
     };
   }
 }

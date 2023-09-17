@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { AttendanceRepository } from '../repositories/AttendanceRepository';
 import { AttendanceRecordDto } from '@/attendance/dto/AttendanceRecordDto';
 import { AttendanceMapper } from '@/attendance/mapper/AttendanceMapper';
+import { AttendanceRecordFactory } from '../factories/AttendanceRecordFactory';
 
 @Injectable()
 export class AttendanceDomainService {
@@ -18,7 +19,7 @@ export class AttendanceDomainService {
   }
 
   async create(dto: AttendanceRecordDto): Promise<number> {
-    const attendanceRecord = AttendanceMapper.toDomain(dto);
+    const attendanceRecord = AttendanceRecordFactory.create(dto);
     const id = await this.attendanceRepository.create(attendanceRecord);
     return id;
   }

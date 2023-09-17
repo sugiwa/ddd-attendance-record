@@ -3,4 +3,5 @@
 export class AttendanceRecordDto {
   id: number;
   attendanceType: number;
+  stampDate: Date;
 }
