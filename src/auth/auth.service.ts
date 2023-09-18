@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { AuthResponse, createClient } from '@supabase/supabase-js';
 
 @Injectable()
 export class AuthService {
-  private supabase = createClient(process.env.API_URL, process.env.API_KEY);
+  constructor(private readonly configService: ConfigService) {}
+  private supabase = createClient(
+    this.configService.get('API_URL'),
+    this.configService.get('API_KEY'),
+  );
 
   async signUp(email: string, password: string) {
     const authResponse: AuthResponse = await this.supabase.auth.signUp({
