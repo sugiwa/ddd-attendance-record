@@ -26,9 +26,9 @@ export class AuthService {
         email,
         password,
       });
-    const { data, error } = authResponse;
-    const { user } = data;
-    return { user, error };
+    const { data } = authResponse;
+    const { session } = data;
+    return session;
   }
 
   async signOut() {
