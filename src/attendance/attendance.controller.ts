@@ -6,11 +6,14 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { AttendanceService } from './attendance.service';
 import { AttendanceRecordDto } from './dto/AttendanceRecordDto';
+import { JwtGuard } from '@/auth/jwt.guard';
 
 @Controller('attendance')
+@UseGuards(JwtGuard)
 export class AttendanceController {
   constructor(private attendanceService: AttendanceService) {}
 

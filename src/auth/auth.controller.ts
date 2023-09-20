@@ -24,6 +24,7 @@ export class AuthController {
   }
 
   @Post('signout')
+  @UseGuards(JwtGuard)
   async signOut() {
     return this.authService.signOut();
   }
