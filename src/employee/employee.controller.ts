@@ -7,14 +7,11 @@ import {
   ParseIntPipe,
   Post,
   Put,
-  UseGuards,
 } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
 import { EmployeeDto } from './dto/EmployeeDto';
-import { JwtGuard } from '@/auth/jwt.guard';
 
 @Controller('employee')
-@UseGuards(JwtGuard)
 export class EmployeeController {
   constructor(private employeeService: EmployeeService) {}
 
