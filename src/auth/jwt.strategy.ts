@@ -1,3 +1,4 @@
+import { API_SECRET_KEY } from '@/constants/auth';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
@@ -11,7 +12,7 @@ export default class JwtStrategy extends PassportStrategy(BaseJwtStrategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: configService.get('API_SECRET_KEY'),
+      secretOrKey: configService.get(API_SECRET_KEY),
     });
   }
 
