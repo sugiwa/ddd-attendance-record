@@ -1,12 +1,36 @@
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-import { ConfigService } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import JwtStrategy from './jwt.strategy';
 import { AuthInterceptor } from './auth.interceptor';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { API_SECRET_KEY } from '@/constants/auth';
 
 @Module({
   controllers: [AuthController],
-  providers: [AuthService, ConfigService, JwtStrategy, AuthInterceptor],
+  imports: [
+    ConfigModule,
+    // JwtModule.registerAsync({
+    //   imports: [ConfigModule],
+    //   useFactory: async (configService: ConfigService) => {
+    //     console.error(`THIS IS ${configService.get(API_SECRET_KEY)}`);
+    //     return {
+    //       secret: configService.get(API_SECRET_KEY),
+    //       secretOrPrivateKey: 'test',
+    //       publicKey: 'test',
+    //       privateKey: 'test',
+    //     };
+    //   },
+    //   inject: [ConfigService],
+    // }),
+  ],
+  providers: [
+    AuthService,
+    ConfigService,
+    JwtStrategy,
+    AuthInterceptor,
+    JwtService,
+  ],
 })
 export class AuthModule {}
