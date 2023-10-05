@@ -4,8 +4,7 @@ import { AuthService } from './auth.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import JwtStrategy from './jwt.strategy';
 import { AuthInterceptor } from './auth.interceptor';
-import { JwtModule, JwtService } from '@nestjs/jwt';
-import { API_SECRET_KEY } from '@/constants/auth';
+import { JwtService } from '@nestjs/jwt';
 
 @Module({
   controllers: [AuthController],
