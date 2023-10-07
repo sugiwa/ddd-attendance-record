@@ -5,10 +5,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import JwtStrategy from './jwt.strategy';
 import { AuthInterceptor } from './auth.interceptor';
 import { JwtService } from '@nestjs/jwt';
+import { EmployeeModule } from '@/employee/employee.module';
 
 @Module({
   controllers: [AuthController],
   imports: [
+    EmployeeModule,
     ConfigModule,
     // JwtModule.registerAsync({
     //   imports: [ConfigModule],

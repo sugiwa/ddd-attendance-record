@@ -2,6 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthRequestDto } from './dto/AuthRequestDto';
 import { Public } from '@/shared/decorators/public.decorator';
+import { AuthSignUpDto } from './dto/AuthSignUpDto';
 
 @Controller('auth')
 export class AuthController {
@@ -14,8 +15,8 @@ export class AuthController {
 
   @Public()
   @Post('signup')
-  async signUp(@Body() dto: AuthRequestDto) {
-    return this.authService.signUp(dto.email, dto.password);
+  async signUp(@Body() dto: AuthSignUpDto) {
+    return this.authService.signUp(dto);
   }
 
   @Public()

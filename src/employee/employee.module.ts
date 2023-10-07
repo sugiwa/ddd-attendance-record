@@ -18,5 +18,6 @@ import { EmployeeRepositoryImpl } from './repositories/EmployeeRepositoryImpl';
       useClass: EmployeeRepositoryImpl,
     },
   ],
+  exports: [EmployeeService],
 })
 export class EmployeeModule {}
