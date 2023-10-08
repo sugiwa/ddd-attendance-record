@@ -2,6 +2,7 @@ import { CONSTANTS } from '@/constants/constantTokens';
 import { Inject, Injectable } from '@nestjs/common';
 import { AttendanceDomainService } from './domain/services/AttendanceDomainService';
 import { AttendanceRecordDto } from './dto/AttendanceRecordDto';
+import { User } from '@/shared/decorators/user.decorator';
 
 @Injectable()
 export class AttendanceService {
@@ -18,8 +19,8 @@ export class AttendanceService {
     return this.attendanceDomainService.find(id);
   }
 
-  async create(dto: AttendanceRecordDto): Promise<number> {
-    const id = await this.attendanceDomainService.create(dto);
+  async create(currentUser: User, dto: AttendanceRecordDto): Promise<number> {
+    const id = await this.attendanceDomainService.create(currentUser, dto);
     return id;
   }
 

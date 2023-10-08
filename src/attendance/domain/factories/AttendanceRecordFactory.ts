@@ -2,13 +2,16 @@ import { AttendanceRecordDto } from '@/attendance/dto/AttendanceRecordDto';
 import { AttendanceRecord } from '../entities/AttendanceRecord';
 import { AttendanceType } from '../valueObjects/AttendanceType';
 import { StampDate } from '../valueObjects/StampDate';
+import { User } from '@/shared/decorators/user.decorator';
 
 export class AttendanceRecordFactory {
-  public static create(dto: AttendanceRecordDto): AttendanceRecord {
+  public static create(
+    currentUser: User,
+    dto: AttendanceRecordDto,
+  ): AttendanceRecord {
     const stampDate = new StampDate(new Date());
     const attendanceType = new AttendanceType(dto.attendanceType);
-    // TODO: get employeeId from token
-    const employeeId = 1;
+    const employeeId = currentUser.employeeId;
     const attendance = new AttendanceRecord({
       id: null,
       attendanceType,

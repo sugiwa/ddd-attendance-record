@@ -4,6 +4,7 @@ import { AttendanceRepository } from '../repositories/AttendanceRepository';
 import { AttendanceRecordDto } from '@/attendance/dto/AttendanceRecordDto';
 import { AttendanceMapper } from '@/attendance/mapper/AttendanceMapper';
 import { AttendanceRecordFactory } from '../factories/AttendanceRecordFactory';
+import { User } from '@/shared/decorators/user.decorator';
 
 @Injectable()
 export class AttendanceDomainService {
@@ -18,8 +19,8 @@ export class AttendanceDomainService {
     return dto;
   }
 
-  async create(dto: AttendanceRecordDto): Promise<number> {
-    const attendanceRecord = AttendanceRecordFactory.create(dto);
+  async create(currentUser: User, dto: AttendanceRecordDto): Promise<number> {
+    const attendanceRecord = AttendanceRecordFactory.create(currentUser, dto);
     const id = await this.attendanceRepository.create(attendanceRecord);
     return id;
   }

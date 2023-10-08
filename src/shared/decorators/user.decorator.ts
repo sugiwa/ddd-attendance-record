@@ -6,3 +6,9 @@ export const CurrentUser = createParamDecorator(
     return request.user;
   },
 );
+
+export type User = {
+  userId: number;
+  email: string;
+  employeeId: number;
+};

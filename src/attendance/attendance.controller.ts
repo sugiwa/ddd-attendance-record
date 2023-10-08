@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { AttendanceService } from './attendance.service';
 import { AttendanceRecordDto } from './dto/AttendanceRecordDto';
+import { CurrentUser, User } from '@/shared/decorators/user.decorator';
 
 @Controller('attendance')
 export class AttendanceController {
@@ -20,8 +21,11 @@ export class AttendanceController {
   }
 
   @Post()
-  async create(@Body() dto: AttendanceRecordDto): Promise<number> {
-    return await this.attendanceService.create(dto);
+  async create(
+    @CurrentUser() currentUser: User,
+    @Body() dto: AttendanceRecordDto,
+  ): Promise<number> {
+    return await this.attendanceService.create(currentUser, dto);
   }
 
   @Put()
